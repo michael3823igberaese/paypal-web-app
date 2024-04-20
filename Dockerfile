@@ -10,6 +10,9 @@ COPY pom.xml /app
 # Copy the sourcecode into the container
 COPY . ./
 
+# Maven installation
+RUN apt-get update && apt-get install -y maven
+
 # Download all thhe required dependencies to run the maven build
 RUN mvn -B dependency:resolve dependency:resolve-plugins
 
